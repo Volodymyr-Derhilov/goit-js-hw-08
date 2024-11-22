@@ -27,7 +27,3 @@ body {
 .gallery-item:hover {
   transform: scale(1.04);
 }
-
-.gallery-link {
-  pointer-events: none;
-}

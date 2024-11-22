@@ -80,10 +80,15 @@ const code = images
 gallery.insertAdjacentHTML("beforeend", code);
 
 gallery.addEventListener("click", (event) => {
+  event.preventDefault();
   const elem = event.target;
-  const img = elem.querySelector(".gallery-image");
-  const imgBig = img.dataset.source;
-  const alt = img.getAttribute("alt");
+  if (!elem.tagName === "IMG" || event.currentTarget === elem) {
+    return;
+  }
+
+  const imgBig = elem.dataset.source;
+  const alt = elem.getAttribute("alt");
+
   const modal = basicLightbox.create(`
   <img width ="1112" height="640" src="${imgBig}" alt="${alt}">`);
   modal.show();
